@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->string('content');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('umami')->default(0);
             $table->integer('enmi')->default(0);
             $table->integer('amami')->default(0);
