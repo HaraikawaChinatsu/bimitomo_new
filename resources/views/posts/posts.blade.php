@@ -1,3 +1,5 @@
+
+
 @if (count($posts) > 0)
     <ul class="list-unstyled">
         @foreach ($posts as $post)
@@ -10,8 +12,6 @@
                         <!--!! link_to_route'users.show', $userName, ['user' => $post->user->id]) !!}-->
                         <span class="text-muted">posted at {{ $post->created_at }}</span>
                     </div>
-
- @foreach ($posts as $post)
             <div class="card mb-4">
                 <div class="card-header">
                     調味料名: {{ $post->title }}
@@ -22,12 +22,55 @@
 
 
                     <p class="card-text">
-                    <li> {!! nl2br(e($post->enmi)) !!}</li>
-                    <li> {!! nl2br(e($post->amami)) !!}</li>
-                    <li> {!! nl2br(e($post->sanmi)) !!}</li>
-                    <li> {!! nl2br(e($post->nigami)) !!}</li>
-                    <li> {!! nl2br(e($post->umami)) !!}</li>
-                    </p>
+
+
+                    @php
+                    $data = [
+                            'labels' => ['旨味', '甘味', '苦味', '酸味', '塩味'],
+                            'datasets' => [
+                                [
+                                    'label' => '味グラフ',
+                                    'data' => [$post->umami, $post->amami, $post->ngami, $post->sanmi, $post->enmi],
+                                    'backgroundColor' =>  'rgba(255, 99, 132, 0.2)',
+                                    'pointBackgroundColor' => 'rgb(255, 99, 132)',
+                                    'pointBorderColor' => '#fff',
+                                    'pointHoverBackgroundColor' => '#fff',
+                                    'pointHoverBorderColor' => 'rgb(255, 99, 132)'
+                                ],
+                            ]
+                    ];
+                    
+                    @endphp
+                    
+                    <canvas id="myChart-{{ $post->id }}" width="300" height="300"></canvas>
+                    <script>
+                        var ctx = document.getElementById("myChart-{{ $post->id }}");
+                        var myRadarChart = new Chart(ctx, {
+                            type: 'radar',
+                            data: <?php echo json_encode($data); ?>,
+                            options: {
+                           　　　responsive: true,
+                           　　　maintainAspectRatio: false,
+                                scale: {
+                                    pointLabels: {
+                                        fontSize: 18, 
+                                        },
+                                    ticks: {
+                                        min: 0,
+                                        max: 5,
+                                        stepSize: 1,
+                                        }
+                                    },
+                                elements: {
+                                    line: {
+                                        borderWidth: 3
+                                    }
+                                }
+                            }
+                        });
+                    </script>
+                    
+                     </p>
                 
                     <div>
                         @if (Auth::id() == $post->user_id)
@@ -37,12 +80,10 @@
                             {!! Form::close() !!}
                         @endif
                     </div>
-                
+        @endforeach              
                 </div>
- @endforeach
                 </div>
             </li>
-        @endforeach
     </ul>
     {{-- ページネーションのリンク --}}
     {{ $posts->links() }}

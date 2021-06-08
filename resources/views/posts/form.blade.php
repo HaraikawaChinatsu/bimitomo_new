@@ -12,6 +12,11 @@
         {{Form::file('file')}}
         <!--!! Form::image'image', null) !!}-->
     </div>
+    <p>資料（任意）</p>
+                   <input class="" name="image_file" type="file" value="{{ old('image_file') }}"><br>
+                   <br>
+    
+    
     <div class="form-group">
         {{Form::label('umami','旨味:')}}
         {{ Form::radio('umami', '0', false, ['class' => 'radio-button__input']) }} 0
@@ -60,6 +65,20 @@
          {{ Form::radio('sanmi', '4', false, ['class' => 'radio-button__input']) }} 4
          {{ Form::radio('sanmi', '5', false, ['class' => 'radio-button__input']) }} 5
     </div>
+    
+    @foreach($amamis as $amami)
+        @php
+        $checked = false;
+        if ($amami === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => $amami]) !!}
+            {!! Form::label($amami, $amami, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
+    
         <!--!! Form::radio'', 'value', true); !!}-->
         <!--!! Form::radio'enmi','塩味', null, ['0', '1', '2', '3', '4', '5']) !!}<br>-->
         <!--<label class="radio-button">-->
