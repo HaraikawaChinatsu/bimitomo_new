@@ -79,23 +79,35 @@ class PostsController extends Controller
             'nigami' => $request->nigami,
             'umami' => $request->umami,
         ]);
-
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
+        $post->image_path = Storage::disk('s3')->url($path);
+        $post->save();
         // 前のURLへリダイレクトさせる
         return back();
     }
     
-    protected function create(array $data)
+    public function form()
     {
-        return Post::create([
-            'title' => $data['title'],
-            'content' =>$data['content'], 
-            'image' =>$data['image'],
-            'enmi' => $data['enmi'],
-            'sanmi' => $data['sanmi'],
-            'amami' => $data['amami'],
-            'nigami' => $data['nigami'],
-            'umami' => $data['umami'], 
-        ]);
+        $amamis = ["1","2","3","4","5"];
+        
+    }
+    
+    public function create(Request $request)
+    {
+      $post = new Post;
+      $form = $request->all();
+
+      //s3アップロード開始
+      $image = $request->file('image');
+      // バケットの`bimitomo`フォルダへアップロード
+      $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
+      // アップロードした画像のフルパスを取得
+      $post->image_path = Storage::disk('s3')->url($path);
+
+      $post->save();
+
+      return redirect('posts/form');
     }
     
     public function destroy($id)

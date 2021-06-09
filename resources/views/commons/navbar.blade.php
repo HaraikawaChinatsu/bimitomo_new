@@ -15,8 +15,6 @@
                     <li class="nav-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'nav-link']) !!}</li>
                      {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー一覧', [], ['class' => 'nav-link']) !!}</li>
-                     {{-- 投稿一覧へのリンク --}}                  
-                    <!--<li class="nav-item">!! link_to_route'posts.posts', 'BIMI一覧', [], ['class' => 'nav-link']) !!}</li>-->
                     {{-- ログアウトへのリンク --}}
                     <li class="nav-item">{!! link_to_route('logout.get', 'ログアウト', ['class' => 'nav-link']) !!}</li>
                 @else

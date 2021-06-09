@@ -32,5 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('followers', 'UsersController@followers')->name('users.followers');
     });
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy','create']]);
+    // Route::get('images', 'PostsController@create')->name('image.create');
+    Route::post('images', 'PostsController@store')->name('image.store');
 });
