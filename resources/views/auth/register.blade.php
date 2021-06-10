@@ -31,6 +31,7 @@
                 
                 <div class="form-group @if(!empty($errors->first('image'))) has-error @endif">
                      {!! Form::label('image', 'プロフィール画像') !!}
+                     
                     <input type="file" name="image">
                     <span class="help-block">{{$errors->first('image')}}</span>
                 </div>

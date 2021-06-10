@@ -69,22 +69,29 @@ class PostsController extends Controller
         ]);
 
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
+        $image_path = Storage::disk('s3')->url($path);
+        // $post->image_path = Storage::disk('s3')->url($path);
+        // $post->save();
+       
+
+        
         $request->user()->posts()->create([
             'content' => $request->content,
             'title' => $request->title,
-            'image' => $request->image,
+            // 'image' => $request->image,
+            'image_path' => $request->image_path,
             'enmi' => $request->enmi,
             'sanmi' => $request->sanmi,
             'amami' => $request->amami,
             'nigami' => $request->nigami,
             'umami' => $request->umami,
         ]);
-        $image = $request->file('image');
-        $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
-        $post->image_path = Storage::disk('s3')->url($path);
-        $post->save();
+        
         // 前のURLへリダイレクトさせる
-        return back();
+        return redirect()->back()->with('s3url', $image_path);
+        // return back();
     }
     
     public function form()
@@ -98,11 +105,8 @@ class PostsController extends Controller
       $post = new Post;
       $form = $request->all();
 
-      //s3アップロード開始
       $image = $request->file('image');
-      // バケットの`bimitomo`フォルダへアップロード
       $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
-      // アップロードした画像のフルパスを取得
       $post->image_path = Storage::disk('s3')->url($path);
 
       $post->save();

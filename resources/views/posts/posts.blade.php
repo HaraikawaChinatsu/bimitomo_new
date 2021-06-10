@@ -10,27 +10,23 @@
                     <div>
                         <span class="text-muted">posted at {{ $post->created_at }}</span>
                     </div>
-            <div class="card mb-4">
-                <div class="card-header">
+                <div class="card mb-4">
+                 <div class="card-header">
                     調味料名: {{ $post->title }}
-                </div>
-                <div class="card-body">
+                 </div>
+                 <div class="card-body">
                     {!! nl2br(e($post->content)) !!}
-                </div>
-                <div class="card-body">
-　　　　　　　　　@if ($post->image_path)
-　　　　　　      <img src="{{ $post->image_path }}">
-　　　　　　      @endif
-　　　　　　    </div>
-
-
+                 </div>
+                 <div class="card-body">
+                    <img src="{{ $post->image }}">
+                    
+                    @if (session('s3url'))
+                   <h1>画像</h1>
+                   <img src="{{ session('s3url') }}">
+                    @endif
+                 </div>
                     <p class="card-text">
-                        
-                            @if ($post->image_path)
-                             <!-- 画像を表示 -->
-                            <img src="{{ $post->image_path }}">
-                             @endif
-
+                   
 
                     @php
                     $data = [
