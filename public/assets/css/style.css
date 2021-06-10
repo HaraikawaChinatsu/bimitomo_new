@@ -1,39 +1,4 @@
-.bg_pattern {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
-  z-index: -1;
-}
-.Paper_v2 {
-  background-image:
-    repeating-linear-gradient(to bottom,
-      transparent 25px,
-      rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-      transparent 27px,  transparent 51px, 
-      rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-      transparent 53px,  transparent 77px, 
-      rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-      transparent 79px,  transparent 103px, 
-      rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-      transparent 105px,  transparent 129px, 
-      rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px),
- 
-    repeating-linear-gradient(to right,
-      transparent 25px,
-      rgba(0, 0, 0, 0.04) 26px,  rgba(0, 0, 0, 0.04) 26px,
-      transparent 27px,  transparent 51px, 
-      rgba(0, 0, 0, 0.04) 52px,  rgba(0, 0, 0, 0.04) 52px,
-      transparent 53px,  transparent 77px, 
-      rgba(0, 0, 0, 0.04) 78px,  rgba(0, 0, 0, 0.04) 78px,
-      transparent 79px,  transparent 103px, 
-      rgba(0, 0, 0, 0.04) 104px,  rgba(0, 0, 0, 0.04) 104px,
-      transparent 105px,  transparent 129px, 
-      rgba(0, 0, 0, 0.04) 130px,  rgba(0, 0, 0, 0.04) 130px);
-}
-
+@charset "utf-8";
 
 /** {*/
 /*   box-sizing: border-box;*/
@@ -68,20 +33,36 @@
 /*   margin: 0 0 0 15px;*/
 /*   font-size: 14px;*/
 /*}*/
-/*.main-visual {*/
-/*   display: flex;*/
-/*   justify-content: center;*/
-/*   align-items: center;*/
-/*   height: 100vh;*/
-/*   width: 100%;*/
-/*   background: url('../images/spice1.jpg') top center / cover no-repeat;*/
-/*}*/
-/*h2 {*/
-/*   margin: 0;*/
-/*   font-size: 30px;*/
-/*   font-weight: normal;*/
-/*   color: #fff;*/
-/*}*/
+.main-visual {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   width: 100%;
+   background: url('../images/spice1.jpg') top center / cover no-repeat;
+   color: #FFFAFA;
+}
+.main-visual2 {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   width: 100%;
+   background: url('../images/harb1.jpg') top center / cover no-repeat;
+   color: #696969;
+}
+h2 {
+   margin: 0;
+   font-size: 30px;
+   font-weight: normal;
+   color: #fff;
+}
+h3 {
+   margin: 0;
+   font-size: 30px;
+   font-weight: normal;
+   color: #D3D3D3;
+}
 
 /*.sp-nav {*/
 /*   display: none;*/

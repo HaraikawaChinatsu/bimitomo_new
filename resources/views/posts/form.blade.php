@@ -1,4 +1,4 @@
-{!! Form::open(['route' => 'posts.store', 'files' => true]) !!}
+{!! Form::open(['route' => 'posts.store', 'files' => true , 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         {{Form::label('title','調味料名:')}}
         {!! Form::text('title', null) !!}
@@ -10,15 +10,6 @@
     <div class="form-group"> 
         {{Form::label('image','イメージ画像:')}}
         {!! Form::file('file') !!}
-    </div>
-    <div class="form-group">
-        {{Form::label('umami','旨味:')}}
-        {{ Form::radio('umami', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('umami', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('umami', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('umami', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('umami', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('umami', '5', false, ['class' => 'radio-button__input']) }} 5
     </div>
     <div class="form-group">
         {{Form::label('enmi','塩味:')}}

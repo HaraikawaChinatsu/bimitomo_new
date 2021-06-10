@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('content')
     @if (Auth::check())
-    
-        ようこそ　{{ Auth::user()->name }}さん！
+<h2>ようこそ　{{ Auth::user()->name }}さん！</h2>
+        <div class="main-visual2">
+                <h3>調味料を使った「味変」や「ちょい足し」で<br>
+                    いつもの食卓をよりおいしく、楽しく、美しく！<br>
+                    地域や国に根付いたユニークな調味料を投稿し<br>
+                    新しい味を発見しましょう。</h3>
+        </div>
         
     @else
     	

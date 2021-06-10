@@ -8,8 +8,6 @@
                 <!--<img class="mr-2 rounded" src="{ Gravatar::get$post->user->email, ['size' => 50]) }}" alt="">-->
                 <div class="media-body">
                     <div>
-                        {{-- 投稿の所有者のユーザ詳細ページへのリンク --}}
-                        <!--!! link_to_route'users.show', $userName, ['user' => $post->user->id]) !!}-->
                         <span class="text-muted">posted at {{ $post->created_at }}</span>
                     </div>
             <div class="card mb-4">
@@ -19,6 +17,11 @@
                 <div class="card-body">
                     {!! nl2br(e($post->content)) !!}
                 </div>
+                <div class="card-body">
+　　　　　　　　　@if ($post->image_path)
+　　　　　　      <img src="{{ $post->image_path }}">
+　　　　　　      @endif
+　　　　　　    </div>
 
 
                     <p class="card-text">
