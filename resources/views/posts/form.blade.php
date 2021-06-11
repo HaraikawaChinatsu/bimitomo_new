@@ -14,10 +14,10 @@
 
     <div class="form-group">
          {{Form::label('塩味:')}}
-        @php
-        $enmis = ['0', '1', '2', '3', '4', '5'];
-        @endphp
-    @foreach($enmis as $enmi)
+    @php
+        $radioArry = [0, 1, 2, 3, 4, 5];
+    @endphp
+    @foreach($radioArry as $enmi)
         @php
         $checked = false;
         if ($enmi === 3) {
@@ -25,18 +25,15 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('enmi', $enmi, $checked, ['class' => 'custom-control-input', 'id' => $enmi]) !!}
-            {!! Form::label($enmi, $enmi, ['class' => 'custom-control-label']) !!}
+            {!! Form::radio('enmi', $enmi, $checked, ['class' => 'custom-control-input', 'id' => 'enmi-' . $enmi]) !!}
+            <label for="enmi-{{ $enmi }}" class="custom-control-label">{{ $enmi }}</label>
         </div>
     @endforeach
     </div>
     
     <div class="form-group">
          {{Form::label('甘味:')}}
-        @php
-        $amamis = ['0', '1', '2', '3', '4', '5'];
-        @endphp
-    @foreach($amamis as $amami)
+    @foreach($radioArry as $amami)
         @php
         $checked = false;
         if ($amami === 3) {
@@ -44,18 +41,15 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => $amami]) !!}
-            {!! Form::label($amami, $amami, ['class' => 'custom-control-label']) !!}
+            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => 'enmi-' . $amami]) !!}
+            <label for="amami-{{ $amami }}" class="custom-control-label">{{ $enmi }}</label>
         </div>
     @endforeach
     </div>
     
     <div class="form-group">
         {{Form::label('苦味:')}}
-        @php
-        $nigamis = ['0', '1', '2', '3', '4', '5'];
-        @endphp
-    @foreach($nigamis as $nigami)
+    @foreach($radioArry as $nigami)
         @php
         $checked = false;
         if ($nigami === 3) {
@@ -63,18 +57,15 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('nigami', $nigami, $checked, ['class' => 'custom-control-input', 'id' => $nigami]) !!}
-            {!! Form::label($nigami, $nigami, ['class' => 'custom-control-label']) !!}
+            {!! Form::radio('nigami', $nigami, $checked, ['class' => 'custom-control-input', 'id' => 'nigami-' . $nigami]) !!}
+            <label for="nigami-{{ $nigami }}" class="custom-control-label">{{ $nigami }}</label>
         </div>
     @endforeach
     </div>
     
     <div class="form-group">
         {{Form::label('酸味:')}}
-        @php
-        $sanmis = ['0', '1', '2', '3', '4', '5'];
-        @endphp
-    @foreach($sanmis as $sanmi)
+    @foreach($radioArry as $sanmi)
         @php
         $checked = false;
         if ($sanmi === 3) {
@@ -82,18 +73,15 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('sanmi', $sanmi, $checked, ['class' => 'custom-control-input', 'id' => $sanmi]) !!}
-            {!! Form::label($sanmi, $sanmi, ['class' => 'custom-control-label']) !!}
+            {!! Form::radio('sanmi', $sanmi, $checked, ['class' => 'custom-control-input', 'id' => 'sanmi-' . $sanmi]) !!}
+            <label for="sanmi-{{ $sanmi }}" class="custom-control-label">{{ $sanmi }}</label>
         </div>
     @endforeach
     </div>
      
      <div class="form-group">
         {{Form::label('旨味:')}}
-        @php
-        $umamis = ['0', '1', '2', '3', '4', '5'];
-        @endphp
-    @foreach($umamis as $umami)
+    @foreach($radioArry as $umami)
         @php
         $checked = false;
         if ($umami === 3) {
@@ -101,8 +89,8 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('umami', $umami, $checked, ['class' => 'custom-control-input', 'id' => $umami]) !!}
-            {!! Form::label($umami, $umami, ['class' => 'custom-control-label']) !!}
+            {!! Form::radio('umami', $umami, $checked, ['class' => 'custom-control-input', 'id' => 'umami-' . $umami]) !!}
+            <label for="umami-{{ $umami }}" class="custom-control-label">{{ $umami }}</label>
         </div>
     @endforeach
     </div>

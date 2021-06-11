@@ -3,9 +3,10 @@
 @if (count($posts) > 0)
     <ul class="list-unstyled">
         @foreach ($posts as $post)
-            <li class="media mb-3">
+        
+             <li class="media mb-3">
                 {{-- 投稿の所有者のメールアドレスをもとにGravatarを取得して表示 --}}
-                <!--<img class="mr-2 rounded" src="{ Gravatar::get$post->user->email, ['size' => 50]) }}" alt="">-->
+                {{--<img class="mr-2 rounded" src="{ Gravatar::get$post->user->email, ['size' => 50]) }}" alt="">--}}
                 <div class="media-body">
                     <div>
                         <span class="text-muted">posted at {{ $post->created_at }}</span>
@@ -14,19 +15,21 @@
                  <div class="card-header">
                     調味料名: {{ $post->title }}
                  </div>
+                    <div class="card-body">
+                     @if($post->image === null)
+                    <img src="{{ asset('/assets/images/noimage.png') }}" alt="noimage" class="card-img-top">
+                     @else
+                    <img src="{{ $post->image }}" class="card-img-top">
+                     @endif
+                    
+
+                 </div>
                  <div class="card-body">
                     {!! nl2br(e($post->content)) !!}
                  </div>
-                 <div class="card-body">
-                    <img src="{{ $post->image }}">
-                    
-                    @if (session('s3url'))
-                   <img src="{{ session('s3url') }}">
-                    @endif
-                 </div>
-                    <p class="card-text">
-                   
-
+                
+                
+                <p class="card-text"> 
                     @php
                     $data = [
                             'labels' => ['旨味', '甘味', '苦味', '酸味', '塩味'],

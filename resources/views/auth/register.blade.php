@@ -29,12 +29,12 @@
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
                 
-                <div class="form-group @if(!empty($errors->first('image'))) has-error @endif">
+           {{--     <div class="form-group @if(!empty($errors->first('image'))) has-error @endif">
                      {!! Form::label('image', 'プロフィール画像') !!}
                      
                     <input type="file" name="image">
                     <span class="help-block">{{$errors->first('image')}}</span>
-                </div>
+                </div>  --}}
                 
                 <div class="form-group">
                     {!! Form::label('introduction', '紹介文') !!}

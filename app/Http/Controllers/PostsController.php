@@ -55,7 +55,7 @@ class PostsController extends Controller
         $request->user()->posts()->create([
             'content' => $request->content,
             'title' => $request->title,
-            'image_path' => $request->image_path,
+            'image' => $image_path,
             'enmi' => $request->enmi,
             'sanmi' => $request->sanmi,
             'amami' => $request->amami,
@@ -70,7 +70,6 @@ class PostsController extends Controller
     
     public function form()
     {
-        $amamis = ["1","2","3","4","5"];
         
     }
     
