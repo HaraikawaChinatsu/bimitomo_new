@@ -3,7 +3,7 @@
 @if (count($posts) > 0)
     <ul class="list-unstyled">
         @foreach ($posts as $post)
-        
+
              <li class="media mb-3">
                 {{-- 投稿の所有者のメールアドレスをもとにGravatarを取得して表示 --}}
                 {{--<img class="mr-2 rounded" src="{ Gravatar::get$post->user->email, ['size' => 50]) }}" alt="">--}}
@@ -36,7 +36,7 @@
                             'datasets' => [
                                 [
                                     'label' => '味グラフ',
-                                    'data' => [$post->umami, $post->amami, $post->ngami, $post->sanmi, $post->enmi],
+                                    'data' => [$post->umami, $post->amami, $post->nigami, $post->sanmi, $post->enmi],
                                     'backgroundColor' =>  'rgba(255, 99, 132, 0.2)',
                                     'pointBackgroundColor' => 'rgb(255, 99, 132)',
                                     'pointBorderColor' => '#fff',
