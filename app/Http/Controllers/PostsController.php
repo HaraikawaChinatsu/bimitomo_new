@@ -10,35 +10,12 @@ use Storage;
 
 class PostsController extends Controller
 {
-    //画像およびコメントアップロード
-    public function upload(Request $request){
-
-//Validatorファサードのmakeメソッドの第１引数は、バリデーションを行うデータ。
-//第２引数はそのデータに適用するバリデーションルール
-        $validator = Validator::make($request->all(), [
-            'image' => 'required|max:10240|mimes:jpeg,gif,png',
-        ]);
-
-//上記のバリデーションがエラーの場合、ビューにバリデーション情報を渡す
-        if ($validator->fails()){
-            return back()->withInput()->withErrors($validator);
-        }
-//s3に画像を保存。第一引数はs3のディレクトリ。第二引数は保存するファイル。
-//第三引数はファイルの公開設定。
-        $image = $request->file('image');
-        $path = Storage::disk('s3')->putFile('/', $file, 'public');
-//カラムに画像のパスとタイトルを保存
-        Post::create([
-            'image' => $path,
-        ]);
-
-        return redirect('/');
-    }
     
     
     
  public function index()
     {
+        $posts = Post::all();
         $data = [];
         if (\Auth::check()) {
             // 認証済みユーザ（閲覧者）を取得
@@ -57,8 +34,10 @@ class PostsController extends Controller
             $umami = Post::$umami;
             $enmi = Post::$enmi;
             $nigami = Post::$nigami;
+
         // Welcomeビューでそれらを表示
-        return view('top', $data);
+        return view('posts.posts', ['posts' => $posts]);
+        // return view('top', $data);
     }
     
     public function store(Request $request)
@@ -72,15 +51,10 @@ class PostsController extends Controller
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
         $image_path = Storage::disk('s3')->url($path);
-        // $post->image_path = Storage::disk('s3')->url($path);
-        // $post->save();
-       
-
         
         $request->user()->posts()->create([
             'content' => $request->content,
             'title' => $request->title,
-            // 'image' => $request->image,
             'image_path' => $request->image_path,
             'enmi' => $request->enmi,
             'sanmi' => $request->sanmi,
@@ -88,9 +62,9 @@ class PostsController extends Controller
             'nigami' => $request->nigami,
             'umami' => $request->umami,
         ]);
-        
+        return back()->with('s3url', $image_path);
         // 前のURLへリダイレクトさせる
-        return redirect()->back()->with('s3url', $image_path);
+        // return redirect()->back()->with('s3url', $image_path);
         // return back();
     }
     
@@ -102,16 +76,7 @@ class PostsController extends Controller
     
     public function create(Request $request)
     {
-      $post = new Post;
-      $form = $request->all();
 
-      $image = $request->file('image');
-      $path = Storage::disk('s3')->putFile('bimitomo', $image, 'public');
-      $post->image_path = Storage::disk('s3')->url($path);
-
-      $post->save();
-
-      return redirect('posts/form');
     }
     
     public function destroy($id)

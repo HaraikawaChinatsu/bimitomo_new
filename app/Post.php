@@ -11,19 +11,19 @@ class Post extends Model
         'image','title','content','amami','sanmi','nigami','umami','enmi'
     ];
     
-    // static $amami = [
-    //     '0', '1', '2', '3', '4', '5'
-    //     ];
-    // static $sanmi = [
-    //     '0', '1', '2', '3', '4', '5'
-    //     ];
-    // static $umami = [
-    //     '0', '1', '2', '3', '4', '5'
-    //     ];
-    // static $enmi = [
-    //     '0', '1', '2', '3', '4', '5'
-    //     ];
-    // static $nigami = [
-    //     '0', '1', '2', '3', '4', '5'
-    //     ];
+    static $amami = [
+        '0', '1', '2', '3', '4', '5'
+        ];
+    static $sanmi = [
+        '0', '1', '2', '3', '4', '5'
+        ];
+    static $umami = [
+        '0', '1', '2', '3', '4', '5'
+        ];
+    static $enmi = [
+        '0', '1', '2', '3', '4', '5'
+        ];
+    static $nigami = [
+        '0', '1', '2', '3', '4', '5'
+        ];
 }

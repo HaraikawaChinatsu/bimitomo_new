@@ -11,54 +11,100 @@
         {{Form::label('image','イメージ画像:')}}
         {!! Form::file('file',['name' => 'image', 'enctype' => 'multipart/form-data']) !!}
     </div>
+
     <div class="form-group">
-        {{Form::label('enmi','塩味:')}}
-        {{ Form::radio('enmi', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('enmi', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('enmi', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('enmi', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('enmi', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('enmi', '5', false, ['class' => 'radio-button__input']) }} 5
+         {{Form::label('塩味:')}}
+        @php
+        $enmis = ['0', '1', '2', '3', '4', '5'];
+        @endphp
+    @foreach($enmis as $enmi)
+        @php
+        $checked = false;
+        if ($enmi === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('enmi', $enmi, $checked, ['class' => 'custom-control-input', 'id' => $enmi]) !!}
+            {!! Form::label($enmi, $enmi, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
     </div>
     
     <div class="form-group">
-        {{Form::label('amami','甘味:')}}
-        {{ Form::radio('amami', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('amami', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('amami', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('amami', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('amami', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('amami', '5', false, ['class' => 'radio-button__input']) }} 5
+         {{Form::label('甘味:')}}
+        @php
+        $amamis = ['0', '1', '2', '3', '4', '5'];
+        @endphp
+    @foreach($amamis as $amami)
+        @php
+        $checked = false;
+        if ($amami === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => $amami]) !!}
+            {!! Form::label($amami, $amami, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
     </div>
     
     <div class="form-group">
-        {{Form::label('nigami','苦味:')}}
-        {{ Form::radio('nigami', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('nigami', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('nigami', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('nigami', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('nigami', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('nigami', '5', false, ['class' => 'radio-button__input']) }} 5
+        {{Form::label('苦味:')}}
+        @php
+        $nigamis = ['0', '1', '2', '3', '4', '5'];
+        @endphp
+    @foreach($nigamis as $nigami)
+        @php
+        $checked = false;
+        if ($nigami === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('nigami', $nigami, $checked, ['class' => 'custom-control-input', 'id' => $nigami]) !!}
+            {!! Form::label($nigami, $nigami, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
     </div>
     
     <div class="form-group">
-        {{Form::label('sanmi','酸味:')}}
-        {{ Form::radio('sanmi', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('sanmi', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('sanmi', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('sanmi', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('sanmi', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('sanmi', '5', false, ['class' => 'radio-button__input']) }} 5
+        {{Form::label('酸味:')}}
+        @php
+        $sanmis = ['0', '1', '2', '3', '4', '5'];
+        @endphp
+    @foreach($sanmis as $sanmi)
+        @php
+        $checked = false;
+        if ($sanmi === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('sanmi', $sanmi, $checked, ['class' => 'custom-control-input', 'id' => $sanmi]) !!}
+            {!! Form::label($sanmi, $sanmi, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
     </div>
-    
-        <div class="form-group">
-        {{Form::label('umami','旨味:')}}
-        {{ Form::radio('umami', '0', false, ['class' => 'radio-button__input']) }} 0
-         {{ Form::radio('umami', '1', true, ['class' => 'radio-button__input']) }} 1
-         {{ Form::radio('umami', '2', false, ['class' => 'radio-button__input']) }} 2
-         {{ Form::radio('umami', '3', false, ['class' => 'radio-button__input']) }} 3
-         {{ Form::radio('umami', '4', false, ['class' => 'radio-button__input']) }} 4
-         {{ Form::radio('umami', '5', false, ['class' => 'radio-button__input']) }} 5
+     
+     <div class="form-group">
+        {{Form::label('旨味:')}}
+        @php
+        $umamis = ['0', '1', '2', '3', '4', '5'];
+        @endphp
+    @foreach($umamis as $umami)
+        @php
+        $checked = false;
+        if ($umami === 3) {
+            $checked = true;
+        }
+        @endphp
+        <div class="custom-control custom-radio custom-control-inline mb-3">
+            {!! Form::radio('umami', $umami, $checked, ['class' => 'custom-control-input', 'id' => $umami]) !!}
+            {!! Form::label($umami, $umami, ['class' => 'custom-control-label']) !!}
+        </div>
+    @endforeach
     </div>
 
         {!! Form::submit('新規投稿', ['class' => 'btn btn-primary btn-block']) !!}

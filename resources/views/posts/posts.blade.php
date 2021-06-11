@@ -21,7 +21,6 @@
                     <img src="{{ $post->image }}">
                     
                     @if (session('s3url'))
-                   <h1>画像</h1>
                    <img src="{{ session('s3url') }}">
                     @endif
                  </div>
