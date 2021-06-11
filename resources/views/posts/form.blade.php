@@ -33,6 +33,9 @@
     
     <div class="form-group">
          {{Form::label('甘味:')}}
+    @php
+        $radioArry = [0, 1, 2, 3, 4, 5];
+    @endphp
     @foreach($radioArry as $amami)
         @php
         $checked = false;
@@ -41,7 +44,7 @@
         }
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
-            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => 'amai-' . $amami]) !!}
+            {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => 'amami-' . $amami]) !!}
             <label for="amami-{{ $amami }}" class="custom-control-label">{{ $amami }}</label>
         </div>
     @endforeach
