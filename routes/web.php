@@ -33,6 +33,6 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy','create']]);
-    // Route::get('images', 'PostsController@create')->name('image.create');
+    Route::get('images', 'PostsController@create')->name('image.store');
     Route::post('images', 'PostsController@store')->name('image.store');
 });
