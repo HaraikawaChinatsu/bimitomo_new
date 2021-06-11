@@ -42,7 +42,7 @@
         @endphp
         <div class="custom-control custom-radio custom-control-inline mb-3">
             {!! Form::radio('amami', $amami, $checked, ['class' => 'custom-control-input', 'id' => 'amai-' . $amami]) !!}
-            <label for="amami-{{ $amami }}" class="custom-control-label">{{ $enmi }}</label>
+            <label for="amami-{{ $amami }}" class="custom-control-label">{{ $amami }}</label>
         </div>
     @endforeach
     </div>
